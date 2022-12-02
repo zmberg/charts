@@ -197,6 +197,23 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: spec.nodeName
+        {{- range $key, $value := .Values.daemon.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
+        {{- if or .Values.daemon.envFromSecrets .Values.daemon.envFromConfigMaps }}
+        envFrom:
+        {{- range .Values.daemon.envFromSecrets }}
+        - secretRef:
+            name: {{ tpl .name $ }}
+            optional: {{ .optional | default false }}
+        {{- end }}
+        {{- range .Values.daemon.envFromConfigMaps }}
+        - configMapRef:
+            name: {{ tpl .name $ }}
+            optional: {{ .optional | default false }}
+        {{- end }}
+        {{- end }}
         livenessProbe:
           failureThreshold: 3
           httpGet:

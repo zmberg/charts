@@ -23,6 +23,9 @@ The following table lists the configurable parameters of the kruise chart and th
 | `manager.nodeAffinity`                    | Node affinity policy for kruise-manager pod                  | `{}`                          |
 | `manager.nodeSelector`                    | Node labels for kruise-manager pod                           | `{}`                          |
 | `manager.tolerations`                     | Tolerations for kruise-manager pod                           | `[]`                          |
+| `daemon.env`                              | Extra environment variables that will be pass onto pods      | `{}`                          |
+| `daemon.envFromSecrets`                   | Extra environment variables from secrets                     | `[]`                          |
+| `daemon.envFromConfigMaps`                | Extra environment variables from config maps                 | `[]`                          |
 | `daemon.log.level`                        | Log level that kruise-daemon printed                         | `4`                           |
 | `daemon.port`                             | Port of metrics and healthz that kruise-daemon served        | `10221`                       |
 | `daemon.pprofAddr`                        | Address of pprof served                                      | `localhost:10222`             |
