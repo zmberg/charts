@@ -92,11 +92,11 @@ webhooks:
         path: /mutate-apps-kruise-io-v1alpha1-cloneset
     failurePolicy: Fail
     name: mcloneset.kb.io
-    {{- if .Values.rollout.webhook.objectSelector }}
     objectSelector:
       matchExpressions:
         - key: rollouts.kruise.io/workload-type
           operator: Exists
+        {{- if .Values.rollout.webhook.objectSelector }}
         {{- range $label := .Values.rollout.webhook.objectSelector }}
         - key: {{ $label.key }}
           operator: {{ $label.operator }}
@@ -107,7 +107,7 @@ webhooks:
             {{- end }}
           {{- end}}
         {{- end }}
-    {{- end }}
+        {{- end }}
     rules:
       - apiGroups:
           - apps.kruise.io
@@ -128,11 +128,11 @@ webhooks:
         path: /mutate-apps-v1-statefulset
     failurePolicy: Fail
     name: mstatefulset.kb.io
-    {{- if .Values.rollout.webhook.objectSelector }}
     objectSelector:
       matchExpressions:
         - key: rollouts.kruise.io/workload-type
           operator: Exists
+        {{- if .Values.rollout.webhook.objectSelector }}
         {{- range $label := .Values.rollout.webhook.objectSelector }}
         - key: {{ $label.key }}
           operator: {{ $label.operator }}
@@ -143,7 +143,7 @@ webhooks:
             {{- end }}
           {{- end}}
         {{- end }}
-    {{- end }}
+        {{- end }}
     rules:
       - apiGroups:
           - apps
@@ -164,11 +164,11 @@ webhooks:
         path: /mutate-apps-kruise-io-statefulset
     failurePolicy: Fail
     name: madvancedstatefulset.kb.io
-    {{- if .Values.rollout.webhook.objectSelector }}
     objectSelector:
       matchExpressions:
         - key: rollouts.kruise.io/workload-type
           operator: Exists
+        {{- if .Values.rollout.webhook.objectSelector }}
         {{- range $label := .Values.rollout.webhook.objectSelector }}
         - key: {{ $label.key }}
           operator: {{ $label.operator }}
@@ -179,7 +179,7 @@ webhooks:
             {{- end }}
           {{- end}}
         {{- end }}
-    {{- end }}
+        {{- end }}
     rules:
       - apiGroups:
           - apps.kruise.io
